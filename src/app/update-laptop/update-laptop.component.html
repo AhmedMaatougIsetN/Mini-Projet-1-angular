@@ -1,0 +1,48 @@
+<div class="container">
+    <div>
+      <h2>Modifier un laptop :</h2>             
+    </div>
+         <form >         
+             <div  class="col-sm-2 col-md-2 col-lg-2">
+               <label >ID  laptop</label>
+               <input  readonly  type="text"  [(ngModel)]="currentlaptop.idlaptop"  
+                   name="idlaptop" class="form-control">
+              </div>
+         
+             <div class="col-sm-4 col-md-4 col-lg-4" >
+               <label >Nom laptop</label>
+               <input  type="text"[(ngModel)]= "currentlaptop.nomlaptop"  
+                   name="nomlaptop" class="form-control">
+             </div>
+
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >Prix laptop</label>
+           <input type="number"   [(ngModel)]= "currentlaptop.prixlaptop"  
+                   name="prixlaptop" class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+                 <label >Date création</label>
+                <input  type="date"  [ngModel]="currentlaptop.dateCreation | date: 'yyyy-MM-dd'" 
+                   (ngModelChange)=" currentlaptop.dateCreation= $event"   name="dateCreation" 
+                   class="form-control">
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+              <label>Type</label>
+              <select class="form-control form-control-lg" id="idType" name="idType" [(ngModel)]="updatedTypeId">
+                @for(type of types; track type.idType)
+                {
+                  <option  [value]="type.idType">  {{type.nomType}} </option>
+                 }
+             </select>
+
+                                
+             </div>
+        
+             
+              <div class="mt-2">
+<button type="submit"  (click)="updatelaptop()" class="btn btn-success">Modifer</button>
+              </div>  
+         </form>
+</div>       

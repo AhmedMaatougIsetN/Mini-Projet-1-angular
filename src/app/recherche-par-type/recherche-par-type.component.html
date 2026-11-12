@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Recherche par type</h2>
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <label for="idType">Type</label>
+    <select id="idType" name="idType" [(ngModel)]="typeSelectionne" class="form-control form-control-lg">
+      <option [ngValue]="null">Tous les types</option>
+      @for (type of types; track type.idType) {
+        <option [ngValue]="type.idType">{{type.nomType}}</option>
+      }
+    </select>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead><tr><th>Id</th><th>Nom</th><th>Prix</th><th>Date création</th><th>Type</th></tr></thead>
+        <tbody>
+          @for (laptop of laptopsFiltres; track laptop.idlaptop) {
+            <tr>
+              <td>{{laptop.idlaptop}}</td>
+              <td>{{laptop.nomlaptop}}</td>
+              <td>{{laptop.prixlaptop}}</td>
+              <td>{{laptop.dateCreation | date:'dd/MM/yyyy'}}</td>
+              <td>{{laptop.type?.nomType || 'PAS DE TYPE'}}</td>
+            </tr>
+          } @empty {
+            <tr><td colspan="5">Aucun laptop pour ce type</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
